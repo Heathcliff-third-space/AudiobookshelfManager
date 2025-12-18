@@ -5,7 +5,7 @@ FROM golang:1.21-alpine AS builder
 ENV GOPROXY=https://goproxy.cn,direct
 
 # 设置工作目录
-WORKDIR /app
+WORKDIR /go/src/github.com/Heathcliff-third-space/AudiobookshelfManager
 
 # 复制 go mod 和 sum 文件
 COPY go.mod go.sum ./
@@ -32,10 +32,10 @@ RUN apk --no-cache add ca-certificates
 WORKDIR /root/
 
 # 从构建阶段复制二进制文件
-COPY --from=builder /app/audiobookshelf-manager .
+COPY --from=builder /go/src/github.com/Heathcliff-third-space/AudiobookshelfManager/audiobookshelf-manager .
 
 # 复制环境变量文件（如果存在）
-COPY --from=builder /app/.env .env
+COPY --from=builder /go/src/github.com/Heathcliff-third-space/AudiobookshelfManager/.env .env
 
 # 暴露端口（虽然 Telegram Bot 不需要监听端口，但以防万一）
 EXPOSE 8080
