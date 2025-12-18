@@ -13,13 +13,13 @@ import (
 
 // Config holds the application configuration
 type Config struct {
-	TelegramBotToken      string
-	AudiobookshelfURL     string
-	AudiobookshelfToken   string
-	AudiobookshelfPort    int
-	Debug                 bool
-	ProxyAddress          string
-	AllowedUserIDs        []int64
+	TelegramBotToken    string
+	AudiobookshelfURL   string
+	AudiobookshelfToken string
+	AudiobookshelfPort  int
+	Debug               bool
+	ProxyAddress        string
+	AllowedUserIDs      []int64
 }
 
 // LoadConfig loads configuration from environment variables
@@ -56,8 +56,10 @@ func LoadConfig() *Config {
 
 // loadEnvFile 尝试从不同位置加载 .env 文件
 func loadEnvFile() {
-	// 定义可能的 .env 文件路径
+	// 定义可能的 .env 文件路径，优先从 conf 目录加载
 	possiblePaths := []string{
+		"conf/.env",
+		"./conf/.env",
 		".env",
 		"./.env",
 		"../.env",
@@ -90,7 +92,7 @@ func loadEnvFile() {
 	basepath := filepath.Dir(b)
 	projectRoot := filepath.Join(basepath, "../../")
 	projectEnv := filepath.Join(projectRoot, ".env")
-	
+
 	if _, err := os.Stat(projectEnv); err == nil {
 		log.Printf("尝试加载 .env 文件: %s", projectEnv)
 		if err := godotenv.Load(projectEnv); err != nil {

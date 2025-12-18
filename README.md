@@ -36,12 +36,16 @@
 
 3. 配置环境变量:
 
-   复制 [.env.example](file:///Users/huanfeng.xu/GolandProjects/AudiobookshelfManager/.env.example) 文件并重命名为 `.env`，然后填写相应的配置信息:
+   程序会优先从 `conf/.env` 文件加载配置，如果不存在则会尝试从 `.env` 文件加载。推荐使用 `conf` 目录来管理配置文件:
    ```
-   cp .env.example .env
+   # 创建 conf 目录（如果尚不存在）
+   mkdir -p conf
+   
+   # 复制示例配置文件
+   cp conf/.env.example conf/.env
    ```
    
-   编辑 `.env` 文件，填写以下信息:
+   编辑 `conf/.env` 文件，填写以下信息:
    ```
    TELEGRAM_BOT_TOKEN=your_telegram_bot_token
    AUDIOBOOKSHELF_URL=http://localhost:13378         # 可选，默认为 localhost:13378
@@ -102,12 +106,12 @@ docker run -d \
 
 #### 方式二：使用配置文件
 
-首先创建配置文件 `.env`，然后挂载到容器中:
+首先创建配置文件 `conf/.env`，然后挂载到容器中:
 
 ```
 docker run -d \
   --name audiobookshelf-manager \
-  -v $(pwd)/.env:/root/.env \
+  -v $(pwd)/conf/.env:/root/conf/.env \
   audiobookshelf-manager
 ```
 
@@ -177,16 +181,16 @@ make test                      # 运行所有测试
 .
 ├── cmd/
 │   └── bot/           # 主程序入口
+├── conf/              # 配置文件目录
+│   ├── .env           # 实际环境变量文件（需自行配置）
+│   └── .env.example   # 环境变量示例文件
 ├── internal/
 │   ├── api/           # Audiobookshelf API 客户端
 │   ├── bot/           # Telegram Bot 相关逻辑
 │   ├── config/        # 配置管理
 │   ├── models/        # 数据模型
 │   └── services/      # 业务逻辑
-├── pkg/               # 公共包
-├── utils/             # 工具函数
-├── .env.example       # 环境变量示例文件
-└── .env               # 实际环境变量文件（需自行配置）
+└── .env               # 实际环境变量文件（备选位置）
 ```
 
 ## 开发指南

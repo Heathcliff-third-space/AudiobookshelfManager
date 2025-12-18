@@ -5,7 +5,6 @@
 *.so
 *.dylib
 audiobookshelf-manager
-bot
 
 # Test binary, built with go test -c
 *.test
@@ -27,7 +26,7 @@ go.work
 *.swo
 
 # Environment variables
-.env
+conf/.env
 
 # OS generated files
 .DS_Store

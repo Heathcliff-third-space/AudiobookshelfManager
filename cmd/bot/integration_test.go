@@ -1,7 +1,7 @@
 package main
 
 import (
-	"AudiobookshelfManager/internal/config"
+	"github.com/Heathcliff-third-space/AudiobookshelfManager/internal/config"
 	"testing"
 )
 
