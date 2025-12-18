@@ -1,8 +1,8 @@
 package services
 
 import (
-	"AudiobookshelfManager/internal/api"
-	"AudiobookshelfManager/internal/models"
+	"github.com/Heathcliff-third-space/AudiobookshelfManager/internal/api"
+	"github.com/Heathcliff-third-space/AudiobookshelfManager/internal/models"
 	"fmt"
 	"log"
 	"strings"

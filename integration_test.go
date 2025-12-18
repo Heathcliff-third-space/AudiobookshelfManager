@@ -1,8 +1,8 @@
 package main
 
 import (
-	"AudiobookshelfManager/internal/api"
-	"AudiobookshelfManager/internal/config"
+	"github.com/Heathcliff-third-space/AudiobookshelfManager/internal/api"
+	"github.com/Heathcliff-third-space/AudiobookshelfManager/internal/config"
 	"net/http"
 	"net/url"
 	"os"

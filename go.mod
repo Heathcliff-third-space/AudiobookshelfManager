@@ -1,4 +1,4 @@
-module AudiobookshelfManager
+module github.com/Heathcliff-third-space/AudiobookshelfManager
 
 go 1.21
 

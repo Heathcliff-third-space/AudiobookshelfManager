@@ -1,8 +1,8 @@
 package api
 
 import (
-	"AudiobookshelfManager/internal/config"
-	"AudiobookshelfManager/internal/models"
+	"github.com/Heathcliff-third-space/AudiobookshelfManager/internal/config"
+	"github.com/Heathcliff-third-space/AudiobookshelfManager/internal/models"
 	"bytes"
 	"encoding/json"
 	"fmt"

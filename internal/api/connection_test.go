@@ -1,7 +1,7 @@
 package api
 
 import (
-	"AudiobookshelfManager/internal/config"
+	"github.com/Heathcliff-third-space/AudiobookshelfManager/internal/config"
 	"context"
 	"os"
 	"testing"
