@@ -29,14 +29,14 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositorie
 RUN apk --no-cache add ca-certificates
 
 # 创建工作目录
-WORKDIR /root/
+WORKDIR /app/
 
 # 从构建阶段复制二进制文件
-COPY --from=builder /go/src/github.com/Heathcliff-third-space/AudiobookshelfManager/audiobookshelf-manager .
+COPY --from=builder /app/audiobookshelf-manager .
 
 # 创建 conf 目录并复制配置文件示例
 RUN mkdir -p conf
-COPY --from=builder /go/src/github.com/Heathcliff-third-space/AudiobookshelfManager/.env.example ./conf/.env.example
+COPY --from=builder /app/.env.example ./conf/.env.example
 
 # 运行应用
 CMD ["./audiobookshelf-manager"]
