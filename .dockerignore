@@ -5,7 +5,7 @@ README.md
 Makefile
 
 # 开发相关
-.env.example
+# .env.example
 .DS_Store
 .idea/
 .vscode/
